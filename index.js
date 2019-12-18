@@ -93,7 +93,7 @@ function processSum(numberList, cb) {
   numberList.length > 0
     ? (sum = numberList.reduce((acc, value) => acc + value))
     : sum;
-  return cb(sum);
+  return cb(sum); //got help with this one and the syntax is strange
 }
 
 /**
@@ -115,7 +115,7 @@ function processSum(numberList, cb) {
  * should return 1000.
 */
 function processProduct(num1, num2, cb) {
-  return cb(num1 * num2)
+  return cb(num1 * num2) // will return numbers multiplied
 }
 
 /**
@@ -139,7 +139,7 @@ function processProduct(num1, num2, cb) {
  * should return "sad".
 */
 function processContains(item, list, cb) {
-  /* CODE HERE */
+  /* if the item is in the list it will come back true */
   return cb(list.includes(item));
 }
 
@@ -164,7 +164,7 @@ function processContains(item, list, cb) {
 */
 function processDuplicateFree(list, cb) {
   let setList = new Set(list);
-  let newList = Array.from(setList);
+  let newList = Array.from(setList);//creats a new copied array instance
   return cb(newList);
 }
 
@@ -187,8 +187,11 @@ function processDuplicateFree(list, cb) {
  * The full names appear in the array in the same order the runners appear in the `runners` array.
 */
 function getFullNames(runners) {
+  //create empty array
   let fullName = [];
+  //use forEach to go through array and push last then first names
   runners.forEach(runner => fullName.push(`${runner.last_name}, ${runner.first_name}`));
+  //return the full name array
   return fullName;
 }
 
@@ -205,7 +208,10 @@ function getFullNames(runners) {
  * The first names appear in the array in the same order the runners appear in the `runners` array.
 */
 function firstNamesAllCaps(runners) {
-  let AllCaps = runners.map(runner => runners.first_name.toUpperCast());
+  //step one -declare variable and run map to go through array
+  //map will not manipulate array but run through and get first names 
+  //use toUpperCast to make them all upper case
+  let AllCaps = runners.map(runner => runners.first_name.toUpperCase());
   return AllCaps;
 }
 
@@ -239,8 +245,8 @@ function getRunnersByTShirtSize(runners, tShirtSize) {
 */
 function tallyUpDonations(runners) {
   let totalDonations = runners.reduce(
-    (acc, runner) => acc + runner.donation, 0
-  );
+    (accumulator, runner) => accumulator + runner.donation, 0 //not sure why they put 0 outside of ()
+  );//run accumulator 
   return totalDonations;
 }
 
@@ -262,9 +268,9 @@ function tallyUpDonations(runners) {
 */
 function counterMaker() {
   // BROKEN CODE STARTS
-  let count = 0;
+  let count = 0;//change from constant because it will change
   function counter() {
-    return count++;
+    return count++;//make count++ 
   }
   return counter;
   // BROKEN CODE ENDS
@@ -293,7 +299,7 @@ function counterMaker() {
 function counterMakerWithLimit(num) {
   let count = 0;
   function counter() {
-    count > num ? (count = 0) : count;
+    count > num ? (count = 0) : count;  //if count >num passed in start count at 0 and return it
     return count++;
   }
   return counter;
